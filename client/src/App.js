@@ -10,7 +10,7 @@ function App() {
   var motorState = 0;
   
   const getMotorState = () => {
-    Axios.get('http://192.168.0.101:3001/get/motor').then((res) => {
+    Axios.get('http://65.49.44.136:3001/get/motor').then((res) => {
       motorState = res.data.data;
       cond(motorState)
     })
@@ -25,7 +25,7 @@ function App() {
   }
 
   const postMotorState = (state) => {
-    Axios.post('http://192.168.0.101:3001/post/motor', {
+    Axios.post('http://65.49.44.136:3001/post/motor', {
       data: state
     }).then((response) => {
       console.log(response);
@@ -50,7 +50,7 @@ function App() {
   const [light, setLight] = useState(0);
 
   const getData = () => {
-    Axios.get('http://192.168.0.101:3001/get/hydroponic/data').then((response) => {
+    Axios.get('http://65.49.44.136:3001/get/hydroponic/data').then((response) => {
       setTemperature(response.data.temperature);
       setHumidity(response.data.humidity);
       setMoisture(response.data.moisture);
