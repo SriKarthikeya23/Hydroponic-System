@@ -5,12 +5,12 @@ services:
       context: ./server
     ports:
       - "3002:3002"
-    container_name: server-side
+    container_name: hydroponic-server-side
 
   client:
     build:
       context: ./client
     ports:
       - "5001:5001"
-    container_name: client-side
+    container_name: hydroponic-client-side
     stdin_open: true
