@@ -1,6 +1,7 @@
 import './App.css';
 import {React, useState} from 'react';
 import Axios from 'axios';
+import bubble from './media/bubble.png';
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
   var motorState = 0;
   
   const getMotorState = () => {
-    Axios.get('http://localhost:3001/get/motor').then((res) => {
+    Axios.get('http://192.168.0.101:3001/get/motor').then((res) => {
       motorState = res.data.data;
       cond(motorState)
     })
@@ -24,7 +25,7 @@ function App() {
   }
 
   const postMotorState = (state) => {
-    Axios.post('http://localhost:3001/post/motor', {
+    Axios.post('http://192.168.0.101:3001/post/motor', {
       data: state
     }).then((response) => {
       console.log(response);
@@ -49,7 +50,7 @@ function App() {
   const [light, setLight] = useState(0);
 
   const getData = () => {
-    Axios.get('http://localhost:3001/get/hydroponic/data').then((response) => {
+    Axios.get('http://192.168.0.101:3001/get/hydroponic/data').then((response) => {
       setTemperature(response.data.temperature);
       setHumidity(response.data.humidity);
       setMoisture(response.data.moisture);
@@ -61,9 +62,19 @@ function App() {
   setInterval(getMotorState, 3000);
 
   return (
-  <div className='App'>
+    <div className='App'>
     <h1>HYDROPONIC SYSTEM</h1>
+    <div className='bubbles'>
+    <img src={bubble} alt="Bubble "></img> 
+      <img src={bubble} alt="Bubble "></img> 
+      <img src={bubble} alt="Bubble "></img> 
+      <img src={bubble} alt="Bubble "></img> 
+      <img src={bubble} alt="Bubble "></img> 
+      <img src={bubble} alt="Bubble "></img> 
+      <img src={bubble} alt="Bubble "></img> 
+    </div>
       <div className = "parameters">
+        <div className='Dev1'>
         <p>
           Hydroponic temperature = {temperature}
           <br></br>
@@ -74,14 +85,16 @@ function App() {
           Hydroponic light intensity = {light}
         </p>
       </div>
-      <div className='motor-control'>
+      <br/>
+      <div className='dev2'>
         <h2>Motor Button</h2>
         <label className="switch" >
           <input type="checkbox" checked={value} onClick={toggler}></input>
           <span className="slider round"></span>
         </label>
       </div>
-  </div>   
+      </div>
+  </div>     
  );
 }
 
