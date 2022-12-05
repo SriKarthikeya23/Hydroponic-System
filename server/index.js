@@ -95,6 +95,6 @@ app.get('/get/motor', (req, res) => {
     res.send(data);
 })
 
-app.listen(3001, () => {
-    console.log("your server is running on 3001");
+app.listen(3002, () => {
+    console.log("your server is running on 3002");
 });
